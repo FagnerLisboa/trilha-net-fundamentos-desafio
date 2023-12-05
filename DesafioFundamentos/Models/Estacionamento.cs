@@ -1,3 +1,6 @@
+using System;
+using System.Text.RegularExpressions;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
@@ -12,12 +15,24 @@ namespace DesafioFundamentos.Models
             this.precoPorHora = precoPorHora;
         }
 
-        public void AdicionarVeiculo()
+        public bool AdicionarVeiculo()
         {
             // IMPLEMENTADO!
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string veiculo = Console.ReadLine();
-            veiculos.Add(veiculo);
+            
+           
+            if (char.IsLetter(veiculo, 4))
+            {
+                var padraoPlaca = new Regex("[a-zA-Z]{3}[0-9]{1}[a-zA-Z]{1}[0-9]{2}, || [a-zA-Z]{3}[0-9]{4}");
+                veiculos.Add(veiculo);
+                return padraoPlaca.IsMatch(veiculo);
+            }  
+            else 
+            {
+                Console.WriteLine("Placa inválida, digite novamente:");
+                return true;
+            } 
         }
 
         public void RemoverVeiculo()
@@ -65,6 +80,12 @@ namespace DesafioFundamentos.Models
             {
                 Console.WriteLine("Não há veículos estacionados.");
             }
+        }
+
+        public bool ValidarVeiculo()
+        {
+             Console.WriteLine("Placa inválida, digite novamente:");
+             return false;
         }
     }
 }
