@@ -31,7 +31,7 @@ namespace DesafioFundamentos.Models
             {
               veiculos.Add(veiculo);
             }
-            return true;
+            return resultado;
         }
 
         private static bool ValidarPlaca(string veiculo)
