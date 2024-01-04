@@ -21,17 +21,17 @@ namespace DesafioFundamentos.Models
             Console.WriteLine("Digite a placa do veículo para estacionar:");
             string veiculo = Console.ReadLine();
 
-            var resultado = ValidarPlaca(veiculo);
-            var mensagem = resultado ? "Veículo estacionado!" : "Placa inválida, digite novamente:";
+            var estacionar = ValidarPlaca(veiculo);
+            var mensagem = estacionar ? "Veículo estacionado!" : "Placa inválida, digite novamente:";
             
             Console.WriteLine($"{mensagem}");
             Console.ReadKey();
 
-            if(resultado) 
+            if(estacionar) 
             {
               veiculos.Add(veiculo);
             }
-            return resultado;
+            return estacionar;
         }
 
         private static bool ValidarPlaca(string veiculo)
@@ -79,7 +79,7 @@ namespace DesafioFundamentos.Models
 
                 // IMPLEMENTADO!
                 veiculos.Remove(placa);
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: {valorTotal:C}");
+                Console.WriteLine($"O veículo {placa.ToUpper()} foi removido e o preço total foi de: {valorTotal:C}");
             }
             else
             {
